@@ -1,0 +1,141 @@
+<div cass="row">
+    <clr-datagrid>
+        <clr-dg-column style="background-color:#BBB3A9">
+            <h4>#</h4>
+        </clr-dg-column>
+        <clr-dg-column style="background-color:#BBB3A9" [clrDgField]="'id'">
+            <h4>
+
+
+                Task ID
+            </h4>
+        </clr-dg-column>
+        <clr-dg-column style="background-color:#BBB3A9">
+            <h4>Title</h4>
+        </clr-dg-column>
+        <clr-dg-column style="background-color:#BBB3A9">
+            <h4>Description</h4>
+        </clr-dg-column>
+        <clr-dg-column style="background-color:#BBB3A9" [clrDgField]="'priority'">
+            <h4>
+                Priority
+            </h4>
+        </clr-dg-column>
+        <clr-dg-column style="background-color:#BBB3A9">
+            <h4>Staus</h4>
+        </clr-dg-column>
+        <clr-dg-column style="background-color:#BBB3A9">
+            <h4>Due Date</h4>
+        </clr-dg-column>
+        <clr-dg-column style="background-color:#BBB3A9">
+            <h4>Resolved At</h4>
+        </clr-dg-column>
+        <clr-dg-column style="background-color:#BBB3A9">
+            <h4>Created</h4>
+        </clr-dg-column>
+        <clr-dg-column style="background-color:#BBB3A9">
+            <h4>Last Updated</h4>
+        </clr-dg-column>
+        <clr-dg-column style="background-color:#BBB3A9">
+            <h4>Action</h4>
+        </clr-dg-column>
+
+        <div [clrLoading]="loading">...</div>
+
+        <clr-dg-row *clrDgItems="let task of tasks,let i = index" style="background-color:#CFC8BD">
+
+            <clr-dg-cell>{{i}}</clr-dg-cell>
+            <clr-dg-cell>{{task.id}}</clr-dg-cell>
+            <clr-dg-cell>{{task.title}}</clr-dg-cell>
+            <clr-dg-cell>{{task.description}}</clr-dg-cell>
+            <clr-dg-cell>{{task.priority}}</clr-dg-cell>
+            <clr-dg-cell>{{task.taskStatus}}</clr-dg-cell>
+
+            <clr-dg-cell>{{task.dueDate}}</clr-dg-cell>
+            <clr-dg-cell>{{task.resolvedAt}}</clr-dg-cell>
+
+            <clr-dg-cell>{{task.createdDate}}</clr-dg-cell>
+            <clr-dg-cell>{{task.lastUpdatedDate}}</clr-dg-cell>
+
+            <clr-dg-cell>
+
+                <button class="btn btn-outline" (click)="udateTask(task)">Update Task</button>
+            </clr-dg-cell>
+
+        </clr-dg-row>
+
+        <clr-dg-footer style="background-color:#BBB3A9">
+            <button class="btn btn-link" (click)="getAllTasksLatest()">
+                <clr-icon shape="refresh">Refresh</clr-icon>
+                Refresh
+            </button>
+            {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} tasks
+            <clr-dg-pagination #pagination [clrDgPageSize]="10">
+            </clr-dg-pagination>
+        </clr-dg-footer>
+    </clr-datagrid>
+
+    <clr-modal [(clrModalOpen)]="basic" [clrModalSize]="'xl'" width="150PX">
+        <p>
+            <h3 class="modal-title" *ngIf="taskToUpdate">Update your task: {{taskToUpdate.id}}</h3>
+            <div class="modal-body" *ngIf="taskToUpdate">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Task Title</th>
+                            <th width="1O%">Task Description</th>
+                            <th width="1O%">Status</th>
+                            <th>Priority</th>
+                            <th>Due Date</th>
+                            <th>Remind Me At</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <input type="text" id="num1" [(ngModel)]="taskToUpdate.title" width="10%">
+                            </td>
+                            <td>
+                                <input type="text" id="num1" [(ngModel)]="taskToUpdate.description">
+                            </td>
+                            <td>
+                                <div class="select" style="width: 200px">
+
+                                    <select id="selects_1" [(ngModel)]="taskToUpdate.taskStatus" value="taskToUpdate.taskStatus">
+                                        <option *ngFor="let status of statuses ;index as i" value={{status}}>{{status}}</option>
+
+                                    </select>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="select" style="width: 100px">
+
+                                    <select id="selects_2" [(ngModel)]="taskToUpdate.priority" value="taskToUpdate.priority">
+                                        <option *ngFor="let priority of priorities ;index as i" value={{priority}}>{{priority}}</option>
+
+                                    </select>
+                                </div>
+                            </td>
+
+                            <td>
+                                <input type="date" clrDate id="num1" [(ngModel)]="taskToUpdate.dueDate">
+                            </td>
+                            <td>
+                                <input type="date" clrDate id="num2" [(ngModel)]="taskToUpdate.remindeMeAT">
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline" (click)="onModalCancel()">Cancel</button>
+                <button type="button" class="btn btn-primary" (click)="onModalOk()">Ok</button>
+            </div>
+    </clr-modal>
+</div>
+<span class="spinner" *ngIf="loading">
+    Loading...
+</span>
