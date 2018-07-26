@@ -10,3 +10,6 @@
  1. Use of RBAC guard for route, since it was for single user so didnt use it.
  2. Dtos ,Payloads and Routines can be auto generated using Yaml parser for Swagger(Open Spec Api) Yamls
  
+ ## You will Require
+ 1. NodeJs ?v8.9
+ 2. Angular cli 1.61
