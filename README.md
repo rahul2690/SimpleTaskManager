@@ -29,6 +29,6 @@ It uses postgresDB , and assumes it is
 
  Application will run at
 
- http://<machine-ip>:8080
+ http://machine-ip:8080
  
  http://localhot:8080
