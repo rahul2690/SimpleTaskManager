@@ -2,10 +2,10 @@
 ## Simple Full Stack Task Managment Service, allowing user to update task written in Angular and Spring Boot
 
 ## Welcome to Task Managment Portal
-   Here User can update your tasks
+   Here User can update his/her tasks
 
-   Getting Started
-   1. User can see all Tasks assigned to you.
+   Quick points to Get Started
+   1. User can see all Tasks assigned to him/her.
    2. By Default new tasks created have Status NOT_STARTED and Due date of 3 days
    3. User can Update Title,Description,Status,Priority,Due Date 
    4. User can also set Remind me At date, so tasks will not be shown till Remind me At.

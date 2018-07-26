@@ -7,6 +7,8 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +26,7 @@ public class TaskServiceImpl implements TaskService {
 
 	private TasksRepository tasksRepository;
 	private TaskConverters taskConverters;
+	private Logger logger = LoggerFactory.getLogger(TaskServiceImpl.class);
 
 	@Autowired
 	public TaskServiceImpl(TasksRepository tasksRepository,
@@ -54,13 +57,15 @@ public class TaskServiceImpl implements TaskService {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			System.out.println("-----------" + task.getRemindeMeAT());
 			if (remindMeDate.compareTo(currentDate) < 1) {
 				tasks.add(task);
 			}
 		});
+
+		logger.info("Length of Tasks Fethced" + tasks.size());
 		if (tasks.isEmpty())
 			return tasks;
+
 		/*
 		 * Sort the Tasks First On basis of priority Then On basis of DueDate
 		 */
@@ -114,7 +119,7 @@ public class TaskServiceImpl implements TaskService {
 			e.printStackTrace();
 		}
 
-		System.out.println("Saved Product Id: " + updatedTask.getId());
+		logger.info("Saved Product Id: " + updatedTask.getId());
 		return updatedTask;
 	}
 

@@ -14,6 +14,7 @@ Backend Is Built Using
  3. More ITs and UTS
  4. DAO could be used but using Spring Boot's Crud Repository so did not used
  5. Creating Task automatically.
+ 6. Here I am using Simple Spring Provided Scheduler to Create Task ,it could be made more complex in micro service world
 
  Assumptions
  1. You have JAVA 8 running
