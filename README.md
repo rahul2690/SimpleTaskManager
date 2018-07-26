@@ -1,8 +1,6 @@
 # SimpleTaskManager
 Simple Full Stack Task Managment Service, allowing user to update task written in Angular and Spring Boot
 
-Read Me
-
 This is simple Task Managment Project
 It uses postgresDB , and assumes it is 
   Running locally at 5432 port, 
@@ -32,4 +30,5 @@ It uses postgresDB , and assumes it is
  Application will run at
 
  http://<machine-ip>:8080
+ 
  http://localhot:8080
