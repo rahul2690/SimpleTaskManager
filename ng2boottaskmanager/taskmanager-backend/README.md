@@ -1,3 +1,4 @@
+# SimpleTaskManager Backend
 
 Welcome to TaskManager Backend
 
@@ -13,3 +14,9 @@ Backend Is Built Using
  3. More ITs and UTS
  4. DAO could be used but using Spring Boot's Crud Repository so did not used
  5. Creating Task automatically.
+
+ Assumptions
+ 1. You have JAVA 8 running
+ 2. postgesDB Running locally at 5432 port, 
+     User -postgres
+     Password -postgres
